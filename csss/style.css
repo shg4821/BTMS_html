@@ -1,0 +1,472 @@
+@charset "UTF-8";
+/* 공통 */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+    font-size: 12px;
+    border-collapse: collapse;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #131230;
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+}
+
+/*왼쪽메뉴*/
+
+/* 메인화면 */
+
+/* 헤더 프로필 */
+
+header {
+    height: 60px;
+    align-items: center !important;
+}
+
+header div {
+    float: left;
+    text-align: center;
+}
+
+.logo, .logo img, .logo a {
+    width: auto;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.user {
+    float: right;
+    height: 100%;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.u_profile div {
+    display: inline;
+}
+
+.admin {
+    float: left;
+    width: 255px;
+}
+
+.admin a {
+    text-align: center;
+    text-decoration: none;
+    color: #131230;
+    display: inline;
+}
+
+.admin a:hover {
+    text-decoration: underline;
+}
+
+.admin button {
+    padding: 5px;
+    margin: 5px;
+}
+
+/* 하단 메뉴창 */
+
+main {
+    height: 750px;
+}
+
+main .teaminfo, .teammenu {
+    float: left;
+}
+
+.teaminfo {
+    width: 30%;
+}
+
+/* 좌측메뉴 */
+
+.team, .sitemap, .team_mascot {
+    width: 100%;
+}
+
+.team {
+    height: 70%;
+}
+
+.team div {
+    float: left;
+}
+
+.team_info {
+    width: 100%;
+    height: 150px;
+}
+
+.team_info div, .team_info table {
+    width: 50%;
+}
+
+.team_bi img, .team_mascot img {
+    width: 100%;
+}
+
+.team_info table {
+    align-items: center;
+    height: 100%;
+}
+
+.team_info th, .team_info td {
+    text-align: unset;
+    padding: 3px;
+}
+
+.rank {
+    width: 100%;
+}
+
+.rank table {
+    width: 100%;
+}
+
+.rank thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.rank th, .team_info th {
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+    border-bottom: solid 2px #B2B2B2;
+    background-color: #EAEAEA;
+}
+
+.team_info th {
+    border-bottom: none;
+    border-right: solid 2px #B2B2B2;
+}
+
+.rank td {
+    height: 25px;
+    text-align: center;
+}
+
+.rank tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.sitemap {
+    height: 30%;
+}
+
+.sitemap a {
+    font-size: 30px;
+    display: inline;
+    color: #303030;
+    margin: 5px;
+}
+
+.sitemap .xi-instagram {
+    background: linear-gradient(to right top, #833ab4, #fd1d1d, #fcb045);
+    border-radius: 30%;
+    color: mintcream;
+}
+
+.sitemap .xi-instagram:hover {
+    background: linear-gradient(to right top, #833ab4, #fd1d1d, #fcb045);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sitemap .xi-facebook-official {
+    background: #3b5998;
+    border-radius: 30%;
+    color: mintcream;
+}
+
+.xi-facebook-official:hover {
+    background: none;
+    color: #3b5998;
+}
+
+.sitemap .xi-twitter {
+    background: #00acee;
+    border-radius: 30%;
+    color: mintcream;
+}
+
+.xi-twitter:hover {
+    background: none;
+    color: #00acee;
+}
+
+.sitemap .xi-youtube-play {
+    background: #c4302b;
+    border-radius: 30%;
+    color: mintcream;
+}
+
+.xi-youtube-play:hover {
+    background: none;
+    color: #c4302b;
+}
+
+/*#####################################################################################*/
+
+/* 우측메뉴 */
+
+main .teammenu {
+    width: 70%;
+    height: 100%;
+}
+
+.player, .coaching_staff, .cheering_squad, .stadium, .records, .sponser {
+    padding: 10px;
+    margin: 1.5%;
+    float: left;
+    width: 30%;
+    height: 300px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px #525252 inset, 0 1px 0 #6A6A6A;
+}
+
+.teammenu>div:hover {
+    border: 1px solid #ED1C24;
+    box-shadow: 0 1px 1px #ED1C24 inset, 0 1px 0 #ED1C24;
+}
+
+.mtitle {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+hr {
+    margin: 10px;
+    color: #ED1C24;
+}
+
+.teammenu li a {
+    font-style: bold;
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    margin: 5 0;
+    display: inline-block;
+}
+
+.teammenu li a:hover {
+    background-color: #131230;
+    color: mintcream;
+}
+
+/* 선수 메뉴 */
+
+/* 1. 선수 목록 페이지 */
+
+.searchPlayer {
+    position: relative;
+    display: inline-block;
+}
+
+.pagination {
+    text-align: center;
+    align-items: center;
+}
+
+.pagination li {
+    display: inline-block;
+    margin-right: 5px !important;
+    cursor: pointer;
+}
+
+.pagination a {
+    display: inline-block;
+    margin-right: 5px !important;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+    color: #ED1C24;
+}
+
+.pTable {
+    height: 400px;
+}
+
+/* 투수/타자 화면 */
+
+.p_thumbs {
+    overflow: hidden;
+    background-color: #EAEAEA;
+    margin: 1%;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 #6A6A6A;
+    display: inline-block;
+}
+
+.p_thumbs:hover {
+    border: 1px solid #ED1C24;
+    box-shadow: 0 1px 0 #ed1c24;
+    color: #ED1C24;
+}
+
+.p_thumbs a {
+    cursor: default;
+}
+
+.p_thumbs img, .p_thumbs div {
+    float: left;
+    height: 200px;
+    width: 63%;
+    object-fit: cover;
+    object-position: left;
+}
+
+.p_thumbs div {
+    width: 36%;
+    padding: 5px !important;
+}
+
+.p_thumbs p {
+    font-weight: normal;
+    float: right;
+    text-align: right;
+    font-size: 24px !important;
+    margin: auto 0;
+}
+
+.p_thumbs strong {
+    text-align: right;
+    font-size: 35px;
+    color: #131230;
+}
+
+.pp_name {
+    float: right;
+    font-size: 15px !important;
+    color: #b2b2b2;
+}
+
+.pp_name>hr {
+    color: #b2b2b2;
+}
+
+
+/* 탭메뉴 */
+.tab {
+    list-style: none;
+    margin: 0;
+    padding: 6px 12px;
+    overflow: hidden;
+}
+/* Float the list items side by side */
+.tab li {
+    width: 100px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    float: left;
+}
+/* Style the links inside the list items */
+.tab li a {
+    display: inline-block;
+    color: #EAEAEA;
+    text-shadow: 0 0 3px #131230 ;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 16px;
+    font-size: 17px;
+    transition:0.3s;
+    cursor: default;
+}
+/* 탭 내부 컨텐츠 */
+.tabcontent {
+    display: none;
+    background-color:#FFF;
+    padding: 6px 12px;
+    min-height: 200px;
+}
+ul.tab li.current{
+    background-color: #131230;
+    color: #fff;
+    border-bottom: #ED1C24 2px solid;
+}
+.tabcontent.current {
+    display: block;
+}
+
+/* 탭메뉴 내부 테이블 */
+.tabcontent table {
+    width: 1044px;
+    display: inline-table;
+}
+.tabcontent th, .tabcontent td {
+    min-width: 33px;
+    padding: 2px 0;
+}
+.tabcontent th, .pl_records th {
+    font-weight: bold;
+    background-color: #EAEAEA;
+    border-bottom: #ED1C24 solid 2px;
+}
+.tabcontent input {
+    width: 30px;
+}
+.tabcontent a {
+    color: #ED1C24;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.tabcontent a:hover {
+    color: #131230;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/*----------- 선수 프로필 -----------*/
+.pl_records table {
+    text-align: center;
+}
+.pl_records th {
+    padding: 3px 10px;
+}

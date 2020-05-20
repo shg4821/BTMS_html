@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BTMS - Baseball Team Management System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 사이드바 CSS -->
+    <link rel="stylesheet" type="text/css" href="csss/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="csss/demo.css" />
+    <link rel="stylesheet" type="text/css" href="csss/component.css" />
+    <!-- 페이지 공통 CSS -->
+    <link rel="stylesheet" href="csss/style.css">
+    <!-- 폼태그 전용 CSS-->
+    <link rel="stylesheet" href="csss/form.css">
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="BTMS-favicon.ico">
+    <link rel="favicon" href="BTMS-favicon.ico">
+    <!-- 아이콘 폰트 - 구글 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- 아이콘 폰트 - XEIcon -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+
+    <script src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style>
+        /* 레이아웃 선 */
+        /* { border: dotted rgb(255, 193, 59) thin; } */
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="main">
+            <header>
+                <div class="container">
+                    <ul id="gn-menu" class="gn-menu-main">
+                        <li class="gn-trigger">
+                            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                            <nav class="gn-menu-wrapper">
+                                <div class="gn-scroller">
+                                    <ul class="gn-menu">
+                                        <li class="gn-search-item">
+                                            <input placeholder="Search" type="search" class="gn-search">
+                                            <i class=""></i>
+                                            <a class="gn-icon gn-icon-search"><span>검색</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gn-icon n-players">선수 관리</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="gn-icon n-pitchers">투수</a></li>
+                                                <li><a class="n-batters">타자</a></li>
+                                                <li><a class="n-juniorplayers">육성/신인</a></li>
+                                                <li><a class="n-armyplayers">군입대</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-coachingstaff">코칭스태프</a></li>
+                                        <li><a class="n-cheers">응원단/FAN</a></li>
+                                        <li><a class="n-stadium">구장</a></li>
+                                        <li>
+                                            <a class="n-records">성적</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="n-pRecords">투수성적</a></li>
+                                                <li><a class="n-bRecords">타자성적</a></li>
+                                                <li><a class="n-tRecords">팀성적</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-sponsers">스폰서</a></li>
+                                    </ul>
+                                </div><!-- /gn-scroller -->
+                            </nav>
+                        </li>
+                        <li class="logo">
+                            <div class="logo">
+                                <a href="main.html">
+                                    <img src="imgs/BTMS logo.png" alt="로고">
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user" id="user">
+                                <div class="u_profile" style="float: right;">
+                                    <div class="box" style="background: #eaeaea;">
+                                        <img class="profile" src="imgs/BI/p_logo.jpg">
+                                    </div>
+                                    <div class="admin" id="admin">
+                                        <a href="team.html" id="t_name">두산베어스</a>관리자&nbsp;
+                                        <a href="team.html" id="ad_name">한결</a>님
+                                        <button class="logout" id="logout">로그아웃</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /container -->
+                <script src="js/classie.js"></script>
+                <script src="js/gnmenu.js"></script>
+                <script>
+                    new gnMenu(document.getElementById('gn-menu'));
+                </script>
+            </header>
+        </div>
+    </div>
+    <main>
+        <div class="teaminfo" id="teaminfo">
+            <div class="team">
+                <div class="team_info">
+                    <div class="team_bi">
+                        <img src="imgs/BI/p_logo.jpg" alt="두산베어스 로고">
+                    </div>
+                    <table>
+                        <tr class="t_name">
+                            <th>구단명</th>
+                            <td>두산베어스</td>
+                        </tr>
+                        <tr class="t_fyear">
+                            <th>창단연도</th>
+                            <td>1982년</td>
+                        </tr>
+                        <tr class="t_htown">
+                            <th>연고지</th>
+                            <td>서울</td>
+                        </tr>
+                        <tr class="st_name">
+                            <th>홈구장</th>
+                            <td>잠실</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="rank">
+                    <p style="font-size: large; color: #303030; text-align: center; padding: 10px;
+                        font-weight: bold;">
+                        2019시즌 순위표</p>
+                    <table class="2019rank">
+                        <thead>
+                            <tr>
+                                <th scope="col">순위</th>
+                                <th scope="col">팀</th>
+                                <th scope="col">승</th>
+                                <th scope="col">패</th>
+                                <th scope="col">무</th>
+                                <th scope="col">승률</th>
+                                <th scope="col">승차</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="font-weight: bold;">
+                                <td>1</td>
+                                <td>두산</td>
+                                <td>88</td>
+                                <td>55</td>
+                                <td>1</td>
+                                <td>0.615</td>
+                                <td>0.0</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>키움</td>
+                                <td>86</td>
+                                <td>57</td>
+                                <td>1</td>
+                                <td>0.601</td>
+                                <td>2.0</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>SK</td>
+                                <td>88</td>
+                                <td>55</td>
+                                <td>1</td>
+                                <td>0.615</td>
+                                <td>0.0</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>LG</td>
+                                <td>79</td>
+                                <td>64</td>
+                                <td>1</td>
+                                <td>0.552</td>
+                                <td>9.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>NC</td>
+                                <td>73</td>
+                                <td>69</td>
+                                <td>2</td>
+                                <td>0.514</td>
+                                <td>14.5</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>KT</td>
+                                <td>71</td>
+                                <td>71</td>
+                                <td>2</td>
+                                <td>0.500</td>
+                                <td>16.5</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>KIA</td>
+                                <td>62</td>
+                                <td>80</td>
+                                <td>2</td>
+                                <td>0.437</td>
+                                <td>25.5</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>삼성</td>
+                                <td>60</td>
+                                <td>83</td>
+                                <td>1</td>
+                                <td>0.420</td>
+                                <td>28.0</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>한화</td>
+                                <td>58</td>
+                                <td>86</td>
+                                <td>0</td>
+                                <td>0.403</td>
+                                <td>30.5</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>롯데</td>
+                                <td>48</td>
+                                <td>93</td>
+                                <td>3</td>
+                                <td>0.340</td>
+                                <td>39.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="sitemap">
+                <ul>
+                    <li>
+                        <a
+                            href="https://www.instagram.com/explore/tags/%EB%B2%A0%EC%96%B4%EC%8A%A4%ED%8F%AC%ED%8B%B0%EB%B9%84/">
+                            <i class="xi-instagram" style="font-size: 50;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/Bearspotv">
+                            <i class="xi-facebook-official" style="font-size: 50;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://twitter.com/hashtag/%EB%B2%A0%EC%96%B4%EC%8A%A4%ED%8F%AC%ED%8B%B0%EB%B9%84?src=hash">
+                            <i class="xi-twitter" style="font-size: 50;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCsebzRfMhwYfjeBIxNX1brg">
+                            <i class="xi-youtube-play" style="font-size: 50;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="teammenu">
+            <div class="player">
+                <a href="players.html" class="mtitle">선수</a>
+                <hr>
+                <ul>
+                    <li><a href="pitchers.html">투수</a></li>
+                    <li><a href="player/batters">타자</a></li>
+                    <li><a href="player/juniors">육성/신인</a></li>
+                    <li><a href="player/armyplayers">군입대</a></li>
+                </ul>
+            </div>
+            <div class="coaching_staff">
+                <a href="coaching_staff.html" class="mtitle">코칭스태프</a>
+                <hr>
+                <ul>
+                    <li><a href="coaching_staff/mcoach">감독</a></li>
+                    <li><a href="coaching_staff/coachs">코치</a></li>
+                </ul>
+            </div>
+            <div class="cheering_squad">
+                <a href="cheering_squad.html" class="mtitle">응원단 / FAN</a>
+                <hr>
+                <ul>
+                    <li><a href="cheering_squad/cheersmanager">응원단장</a></li>
+                    <li><a href="cheering_squad/cheerleaders">치어리더</a></li>
+                    <li><a href="https://www.doorundoorun.com/kr/main.do">팬클럽</a></li>
+                </ul>
+            </div>
+            <div class="stadium">
+                <a href="stadium.html" class="mtitle">구장</a>
+                <hr>
+                <ul>
+                    <li><a href="stadium/homestadium">홈구장</a></li>
+                    <li><a href="stadium/futurestadium">2군구장</a></li>
+                </ul>
+            </div>
+            <div class="records">
+                <a href="records.html" class="mtitle">성적</a>
+                <hr>
+                <ul>
+                    <li><a href="records/teamrecords">구단성적</a></li>
+                    <li><a href="records/pitcherrecords">투수기록</a></li>
+                    <li><a href="records/batterrecords">타자기록</a></li>
+                </ul>
+            </div>
+            <div class="sponser">
+                <a href="sponser.html" class="mtitle">스폰서 / FAMILY</a>
+                <hr>
+                <ul>
+                    <li><a href="sponser/groups">그룹계열사</a></li>
+                    <li><a href="sponser/teamsponser">스폰서</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer class="cpr">
+        <svg width="100%" height="100px">
+            <!-- 그라디언트 -->
+            <defs>
+                <linearGradient id=liFoot x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color: #fff; 
+                        stop-opacity: 1;"></stop>
+                    <stop offset="100%" style="stop-color: #EAEAEA; 
+                        stop-opacity: 1;"></stop>
+                </linearGradient>
+            </defs>
+            <!-- 도형 -->
+            <rect width="100%" height="100%" style="fill: url(#liFoot);"></rect>
+            <!-- 텍스트 -->
+            <text alignment-baseline="central" fill="black" x="42%" y=50% style="font-weight: border; text-shadow: #fff -1px 1px;
+                font-size: 11px;">
+                Copyrightⓒ HG With 2019 Doosan Bears Inc. All Rights Reserved.</text>
+        </svg>
+    </footer>
+</body>
+
+</html>

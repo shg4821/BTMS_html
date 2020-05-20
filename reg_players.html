@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BTMS - Baseball Team Management System</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+    <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+    <meta name="author" content="Codrops" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 사이드바 CSS -->
+    <link rel="stylesheet" type="text/css" href="csss/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="csss/demo.css" />
+    <link rel="stylesheet" type="text/css" href="csss/component.css" />
+    <!-- 페이지 공통 CSS -->
+    <link rel="stylesheet" href="csss/style.css">
+    <!-- 폼태그 전용 CSS-->
+    <link rel="stylesheet" href="csss/form.css">
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="BTMS-favicon.ico">
+    <link rel="favicon" href="BTMS-favicon.ico">
+    <!-- 아이콘 폰트 - 구글 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- 아이콘 폰트 - XEIcon -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <script src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('ul.tab li').click(function () {
+                var activeTab = $(this).attr('data-tab');
+                $('ul.tab li').removeClass('current');
+                $('.tabcontent').removeClass('current');
+                $(this).addClass('current');
+                $('#' + activeTab).addClass('current');
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="main">
+            <header>
+                <div class="container">
+                    <ul id="gn-menu" class="gn-menu-main">
+                        <li class="gn-trigger">
+                            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                            <nav class="gn-menu-wrapper">
+                                <div class="gn-scroller">
+                                    <ul class="gn-menu">
+                                        <li class="gn-search-item">
+                                            <input placeholder="Search" type="search" class="gn-search">
+                                            <i class=""></i>
+                                            <a class="gn-icon gn-icon-search"><span>검색</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gn-icon n-players">선수 관리</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="gn-icon n-pitchers">투수</a></li>
+                                                <li><a class="n-batters">타자</a></li>
+                                                <li><a class="n-juniorplayers">육성/신인</a></li>
+                                                <li><a class="n-armyplayers">군입대</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-coachingstaff">코칭스태프</a></li>
+                                        <li><a class="n-cheers">응원단/FAN</a></li>
+                                        <li><a class="n-stadium">구장</a></li>
+                                        <li>
+                                            <a class="n-records">성적</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="n-pRecords">투수성적</a></li>
+                                                <li><a class="n-bRecords">타자성적</a></li>
+                                                <li><a class="n-tRecords">팀성적</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-sponsers">스폰서</a></li>
+                                    </ul>
+                                </div><!-- /gn-scroller -->
+                            </nav>
+                        </li>
+                        <li class="logo">
+                            <div class="logo">
+                                <a href="main.html">
+                                    <img src="imgs/BTMS logo.png" alt="로고">
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user" id="user">
+                                <div class="u_profile" style="float: right;">
+                                    <div class="box" style="background: #eaeaea;">
+                                        <img class="profile" src="imgs/BI/p_logo.jpg">
+                                    </div>
+                                    <div class="admin" id="admin">
+                                        <a href="team.html" id="t_name">두산베어스</a>관리자&nbsp;
+                                        <a href="team.html" id="ad_name">한결</a>님
+                                        <button class="logout" id="logout">로그아웃</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /container -->
+                <script src="js/classie.js"></script>
+                <script src="js/gnmenu.js"></script>
+                <script>
+                    new gnMenu(document.getElementById('gn-menu'));
+                </script>
+            </header>
+        </div>
+    </div>
+    <center>
+        <section class="reg_p">
+            <h1 style="text-align: center; font-size: 33px; font-weight: bold;">- 선수등록 -</h1>
+            <fieldset>
+                <legend>선수 기본정보 입력</legend>
+                <table class="players" style="display: block; width: 1044px;">
+                    <form action="">
+                        <tr class="reg_p pl_name">
+                            <th>이름</th>
+                            <td>
+                                <input type="text" name="pl_name" required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td>
+                                <input type="date" name="bDay" id="uBd" style="width: 150;" max="2019-12-31"
+                                    min="1900-01-01">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>신장</th>
+                            <td>
+                                <input type="number" name="pl_height" id="pl_height" style="width: 70px;" min="100"
+                                    max="230"> cm
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>체중</th>
+                            <td>
+                                <input type="number" name="pl_weight" id="pl_weight" style="width: 70px;" maxlength="3">
+                                kg
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>등번호</th>
+                            <td>
+                                <input type="number" name="pl_bn" id="pl_bn" style="width: 70px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>포지션/투타</th>
+                            <td>
+                                <select name="pp_name" id="pp_name">
+                                    <option value="">== 선택 ==</option>
+                                    <option value="">투수</option>
+                                    <option value="">포수</option>
+                                    <option value="">내야수</option>
+                                    <option value="">외야수</option>
+                                </select>
+                                /
+                                <select name="pt_name" id="pt_name">
+                                    <option value="">== 선택 ==</option>
+                                    <option value="">우투우타</option>
+                                    <option value="">좌투좌타</option>
+                                    <option value="">양투양타</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>선수상태</th>
+                            <td>
+                                <select name="pp_name" id="pp_name">
+                                    <option value="">== 선택 ==</option>
+                                    <option value="">1군</option>
+                                    <option value="">2군</option>
+                                    <option value="">육성/신인</option>
+                                    <option value="">군입대</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>학력</th>
+                            <td>
+                                <input type="text" name="pl_es" id="pl_es" style="width: 100px;" placeholder="초등학교"> -
+                                <input type="text" name="pl_ms" id="pl_ms" style="width: 100px;" placeholder="중학교"> -
+                                <input type="text" name="pl_hs" id="pl_hs" style="width: 100px;" placeholder="고등학교"> -
+                                <input type="text" name="pl_univ" id="pl_univ" style="width: 100px;" placeholder="대학교">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>경력</th>
+                            <td>
+                                <input type="text" name="pl_es" id="pl_es" style="width: 100px;" placeholder="군팀"> /
+                                <input type="text" name="pl_ms" id="pl_ms" style="width: 100px;" placeholder="이전 소속팀">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>입단년도</th>
+                            <td>
+                                <input type="number" name="pl_jyear" id="pl_jyear" style="width: 70px;" max="2020"
+                                    min="1982">년
+                            </td>
+                        </tr>
+                        <tr class="reg_p pl_nrank">
+                            <th>지명순위</th>
+                            <td>
+                                <input type="text" name="pl_nrank" id="pl_nrank">
+                            </td>
+                        </tr>
+                        <tr class="reg_p pl_nrank">
+                            <th>연봉</th>
+                            <td>
+                                <input type="number" name="pl_nrank" id="pl_as"> 만원
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="reg_p pl_pic">사진</th>
+                            <td><input type="file" style="padding: 0%; width: auto;"></td>
+                        </tr>
+                    </form>
+                </table>
+            </fieldset>
+        </section>
+        <section class="res02">
+            <fieldset>
+                <legend>역대 시즌 기록 입력</legend>
+                <ul class="tab">.
+                    <li class="current" data-tab="tab1"><a href="#">hit</a></li>
+                    <li data-tab="tab2"><a href="#">pit</a></li>
+                </ul>
+                    <div id="tab1" class="tabcontent current">
+                        <table id="hr_list">
+                            <colgroup>
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>YEAR</th>
+                                    <th>G</th>
+                                    <th>AVG</th>
+                                    <th>PA</th>
+                                    <th>AB</th>
+                                    <th>R</th>
+                                    <th>H</th>
+                                    <th>2B</th>
+                                    <th>3B</th>
+                                    <th>HR</th>
+                                    <th>TB</th>
+                                    <th>RBI</th>
+                                    <th>SB</th>
+                                    <th>CS</th>
+                                    <th>SAC</th>
+                                    <th>SF</th>
+                                    <th>BB</th>
+                                    <th>IBB</th>
+                                    <th>HBP</th>
+                                    <th>SO</th>
+                                    <th>GDP</th>
+                                    <th>SLG</th>
+                                    <th>OBP</th>
+                                    <th>E</th>
+                                    <th>SBP</th>
+                                    <th>MH</th>
+                                    <th>OPS</th>
+                                    <th>RISP</th>
+                                    <th>PHBA</th>
+                                    <th>Act</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: x-small;">
+                                <tr>
+                                    <td id="hr_year">연도</td>
+                                    <td id="hr_g">경기</td>
+                                    <td id="hr_avg">타율</td>
+                                    <td id="hr_pa">타석</td>
+                                    <td id="hr_ab">타수</td>
+                                    <td id="hr_r">득점</td>
+                                    <td id="hr_h">안타</td>
+                                    <td id="hr_2b">2루타</td>
+                                    <td id="hr_3b">3루타</td>
+                                    <td id="hr_hr">홈런</td>
+                                    <td id="hr_tb">루타</td>
+                                    <td id="hr_rbi">타점</td>
+                                    <td id="hr_sb">도루</td>
+                                    <td id="hr_cs">도루<br>실패</td>
+                                    <td id="hr_sac">희생<br>번트</td>
+                                    <td id="hr_sf">희생<br>플라이</td>
+                                    <td id="hr_bb">볼넷</td>
+                                    <td id="hr_ibb">고의<br>4구</td>
+                                    <td id="hr_hbp">사구</td>
+                                    <td id="hr_so">삼진</td>
+                                    <td id="hr_gdp">병살</td>
+                                    <td id="hr_slg">장타</td>
+                                    <td id="hr_obp">출루율</td>
+                                    <td id="hr_e">실책</td>
+                                    <td id="hr_sbp">도루<br>성공율</td>
+                                    <td id="hr_mh">멀티<br>히트</td>
+                                    <td id="hr_ops">OPS</td>
+                                    <td id="hr_risp">RISP</td>
+                                    <td id="hr_phba">PHBA</td>
+                                    <td><a href="#" class="delete-link">삭제</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table id="append_table">
+                            <colgroup>
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><label for="hr_year"></label>연도</label></th>
+                                    <th>G</th>
+                                    <th>AVG</th>
+                                    <th>PA</th>
+                                    <th>AB</th>
+                                    <th>R</th>
+                                    <th>H</th>
+                                    <th>2B</th>
+                                    <th>3B</th>
+                                    <th>HR</th>
+                                    <th>TB</th>
+                                    <th>RBI</th>
+                                    <th>SB</th>
+                                    <th>CS</th>
+                                    <th>SAC</th>
+                                    <th>SF</th>
+                                    <th>BB</th>
+                                    <th>IBB</th>
+                                    <th>HBP</th>
+                                    <th>SO</th>
+                                    <th>GDP</th>
+                                    <th>SLG</th>
+                                    <th>OBP</th>
+                                    <th>E</th>
+                                    <th>SBP</th>
+                                    <th>MH</th>
+                                    <th>OPS</th>
+                                    <th>RISP</th>
+                                    <th>PHBA</th>
+                                    <th>Add</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" id="hr_year"></td>
+                                    <td><input type="text" id="hr_g"></td>
+                                    <td><input type="text" id="hr_avg"></td>
+                                    <td><input type="text" id="hr_pa"></td>
+                                    <td><input type="text" id="hr_ab"></td>
+                                    <td><input type="text" id="hr_r"></td>
+                                    <td><input type="text" id="hr_h"></td>
+                                    <td><input type="text" id="hr_2b"></td>
+                                    <td><input type="text" id="hr_3b"></td>
+                                    <td><input type="text" id="hr_hr"></td>
+                                    <td><input type="text" id="hr_tb"></td>
+                                    <td><input type="text" id="hr_rbi"></td>
+                                    <td><input type="text" id="hr_sb"></td>
+                                    <td><input type="text" id="hr_cs"></td>
+                                    <td><input type="text" id="hr_sac"></td>
+                                    <td><input type="text" id="hr_sf"></td>
+                                    <td><input type="text" id="hr_bb"></td>
+                                    <td><input type="text" id="hr_ibb"></td>
+                                    <td><input type="text" id="hr_hbp"></td>
+                                    <td><input type="text" id="hr_so"></td>
+                                    <td><input type="text" id="hr_gdp"></td>
+                                    <td><input type="text" id="hr_slg"></td>
+                                    <td><input type="text" id="hr_obp"></td>
+                                    <td><input type="text" id="hr_e"></td>
+                                    <td><input type="text" id="hr_sbp"></td>
+                                    <td><input type="text" id="hr_mh"></td>
+                                    <td><input type="text" id="hr_ops"></td>
+                                    <td><input type="text" id="hr_risp"></td>
+                                    <td><input type="text" id="hr_phba"></td>
+                                    <td><button type="button" id="append_row">add</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <script type="text/javascript">
+                            $('#append_row').on("click", function () {
+                                $('#hr_list').append(
+                                    $('<tr>').append(
+                                        $('<td>').append($('#hr_year').val()),
+                                        $('<td>').append($('#hr_g').val()),
+                                        $('<td>').append($('#hr_avg').val()),
+                                        $('<td>').append($('#hr_pa').val()),
+                                        $('<td>').append($('#hr_ab').val()),
+                                        $('<td>').append($('#hr_r').val()),
+                                        $('<td>').append($('#hr_h').val()),
+                                        $('<td>').append($('#hr_2b').val()),
+                                        $('<td>').append($('#hr_3b').val()),
+                                        $('<td>').append($('#hr_hr').val()),
+                                        $('<td>').append($('#hr_tb').val()),
+                                        $('<td>').append($('#hr_rbi').val()),
+                                        $('<td>').append($('#hr_sb').val()),
+                                        $('<td>').append($('#hr_cs').val()),
+                                        $('<td>').append($('#hr_sac').val()),
+                                        $('<td>').append($('#hr_sf').val()),
+                                        $('<td>').append($('#hr_bb').val()),
+                                        $('<td>').append($('#hr_ibb').val()),
+                                        $('<td>').append($('#hr_hbp').val()),
+                                        $('<td>').append($('#hr_so').val()),
+                                        $('<td>').append($('#hr_gdp').val()),
+                                        $('<td>').append($('#hr_slg').val()),
+                                        $('<td>').append($('#hr_obp').val()),
+                                        $('<td>').append($('#hr_e').val()),
+                                        $('<td>').append($('#hr_sbp').val()),
+                                        $('<td>').append($('#hr_mh').val()),
+                                        $('<td>').append($('#hr_ops').val()),
+                                        $('<td>').append($('#hr_risp').val()),
+                                        $('<td>').append($('#hr_phba').val()),
+                                        $('<td>').append(
+                                            // property와 attribute의 차이!!
+                                            $('<a>').prop('href', '#').addClass('delete-link').append('삭제')
+                                            // <a href="#" class="delete-link">Delete</a>
+                                        )
+                                    )
+                                );
+                            });
+
+                            $('#hr_list').on("click", ".delete-link", function () {
+                                // this == a의 부모의 부모는 tr태그
+                                $(this).parent().parent().remove();
+                            })
+                        </script>
+                    </div>
+                <div id="tab2" class="tabcontent">
+                        <table id="pr_list">
+                            <colgroup>
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>YEAR</label></th>
+                                    <th>ERA</th>
+                                    <th>G</th>
+                                    <th>CG</th>
+                                    <th>SHO</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>SV</th>
+                                    <th>HLD</th>
+                                    <th>WPCT</th>
+                                    <th>TBF</th>
+                                    <th>NP</th>
+                                    <th>IP</th>
+                                    <th>H</th>
+                                    <th>2B</th>
+                                    <th>3B</th>
+                                    <th>HR</th>
+                                    <th>SAC</th>
+                                    <th>SF</th>
+                                    <th>BB</th>
+                                    <th>IBB</th>
+                                    <th>SO</th>
+                                    <th>WP</th>
+                                    <th>BK</th>
+                                    <th>R</th>
+                                    <th>ER</th>
+                                    <th>BSV</th>
+                                    <th>WHIP</th>
+                                    <th>AVG</th>
+                                    <th>QS</th>
+                                    <th>Act</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: x-small;">
+                                <tr>
+                                    <td id="PR_YEAR">연도</td>
+                                    <td>ERA</td>
+                                    <td>경기</td>
+                                    <td>완투</td>
+                                    <td>완봉</td>
+                                    <td>승</td>
+                                    <td>패</td>
+                                    <td>세이브</td>
+                                    <td>홀드</td>
+                                    <td>승률</td>
+                                    <td>타자</td>
+                                    <td>투구</td>
+                                    <td>이닝</td>
+                                    <td>피안타</td>
+                                    <td>2루타</td>
+                                    <td>3루타</td>
+                                    <td>피홈런</td>
+                                    <td>희생<br>번트</td>
+                                    <td>희생<br>플라이</td>
+                                    <td>볼넷</td>
+                                    <td>고의<br>4구</td>
+                                    <td>탈삼진</td>
+                                    <td>폭투</td>
+                                    <td>보크</td>
+                                    <td>실점</td>
+                                    <td>자책점</td>
+                                    <td>블론<br>세이브</td>
+                                    <td>WHIP</td>
+                                    <td>피안타율</td>
+                                    <td>퀄리티<br>스타트</td>
+                                    <td><a href="#" class="delete-link">삭제</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table border="1" id="append_table">
+                            <colgroup>
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                                <col style="min-width: 33px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><label for="PR_YEAR">YEAR</label></th>
+                                    <th>ERA</th>
+                                    <th>G</th>
+                                    <th>CG</th>
+                                    <th>SHO</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>SV</th>
+                                    <th>HLD</th>
+                                    <th>WPCT</th>
+                                    <th>TBF</th>
+                                    <th>NP</th>
+                                    <th>IP</th>
+                                    <th>H</th>
+                                    <th>2B</th>
+                                    <th>3B</th>
+                                    <th>HR</th>
+                                    <th>SAC</th>
+                                    <th>SF</th>
+                                    <th>BB</th>
+                                    <th>IBB</th>
+                                    <th>SO</th>
+                                    <th>WP</th>
+                                    <th>BK</th>
+                                    <th>R</th>
+                                    <th>ER</th>
+                                    <th>BSV</th>
+                                    <th>WHIP</th>
+                                    <th>AVG</th>
+                                    <th>QS</th>
+                                    <th>Add</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" id="pr_year"></td>
+                                    <td><input type="text" id="pr_era"></td>
+                                    <td><input type="text" id="pr_g"></td>
+                                    <td><input type="text" id="pr_cg"></td>
+                                    <td><input type="text" id="pr_sho"></td>
+                                    <td><input type="text" id="pr_w"></td>
+                                    <td><input type="text" id="pr_l"></td>
+                                    <td><input type="text" id="pr_sv"></td>
+                                    <td><input type="text" id="pr_hld"></td>
+                                    <td><input type="text" id="pr_wpct"></td>
+                                    <td><input type="text" id="pr_tbf"></td>
+                                    <td><input type="text" id="pr_np"></td>
+                                    <td><input type="text" id="pr_ip"></td>
+                                    <td><input type="text" id="pr_h"></td>
+                                    <td><input type="text" id="pr_2b"></td>
+                                    <td><input type="text" id="pr_3b"></td>
+                                    <td><input type="text" id="pr_hr"></td>
+                                    <td><input type="text" id="pr_sac"></td>
+                                    <td><input type="text" id="pr_sf"></td>
+                                    <td><input type="text" id="pr_bb"></td>
+                                    <td><input type="text" id="pr_ibb"></td>
+                                    <td><input type="text" id="pr_so"></td>
+                                    <td><input type="text" id="pr_wp"></td>
+                                    <td><input type="text" id="pr_bk"></td>
+                                    <td><input type="text" id="pr_r"></td>
+                                    <td><input type="text" id="pr_er"></td>
+                                    <td><input type="text" id="pr_bsv"></td>
+                                    <td><input type="text" id="pr_whip"></td>
+                                    <td><input type="text" id="pr_avg"></td>
+                                    <td><input type="text" id="pr_qs"></td>
+                                    <td><button type="button" id="append_pr">add</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <script type="text/javascript">
+                            $('#append_pr').on("click", function () {
+                                $('#pr_list').append(
+                                    $('<tr>').append(
+                                        $('<td>').append($('#PR_YEAR').val()),
+                                        $('<td>').append($('#PR_ERA').val()),
+                                        $('<td>').append($('#PR_G').val()),
+                                        $('<td>').append($('#PR_CG').val()),
+                                        $('<td>').append($('#PR_SHO').val()),
+                                        $('<td>').append($('#PR_W').val()),
+                                        $('<td>').append($('#PR_L').val()),
+                                        $('<td>').append($('#PR_SV').val()),
+                                        $('<td>').append($('#PR_HLD').val()),
+                                        $('<td>').append($('#PR_WPCT').val()),
+                                        $('<td>').append($('#PR_TBF').val()),
+                                        $('<td>').append($('#PR_NP').val()),
+                                        $('<td>').append($('#PR_IP').val()),
+                                        $('<td>').append($('#PR_H').val()),
+                                        $('<td>').append($('#PR_2B').val()),
+                                        $('<td>').append($('#PR_3B').val()),
+                                        $('<td>').append($('#PR_HR').val()),
+                                        $('<td>').append($('#PR_SAC').val()),
+                                        $('<td>').append($('#PR_SF').val()),
+                                        $('<td>').append($('#PR_BB').val()),
+                                        $('<td>').append($('#PR_IBB').val()),
+                                        $('<td>').append($('#PR_SO').val()),
+                                        $('<td>').append($('#PR_WP').val()),
+                                        $('<td>').append($('#PR_BK').val()),
+                                        $('<td>').append($('#PR_R').val()),
+                                        $('<td>').append($('#PR_ER').val()),
+                                        $('<td>').append($('#PR_BSV').val()),
+                                        $('<td>').append($('#PR_WHIP').val()),
+                                        $('<td>').append($('#PR_AVG').val()),
+                                        $('<td>').append($('#PR_QS').val()),
+                                        $('<td>').append(
+                                            // property와 attribute의 차이!!
+                                            $('<a>').prop('href', '#').addClass('delete-link').append('삭제')
+                                            // <a href="#" class="delete-link">Delete</a>
+                                        )
+                                    )
+                                );
+                            });
+
+                            $('#pr_list').on("click", ".delete-link", function () {
+                                // this == a의 부모의 부모는 tr태그
+                                $(this).parent().parent().remove();
+                            })
+                        </script>
+                </div>
+            </fieldset>
+        </section>
+    </center>
+</body>
+
+</html>

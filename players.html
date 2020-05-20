@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BTMS - Baseball Team Management System</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="A sidebar menu as seen on the Google Nexus 7 website" />
+    <meta name="keywords" content="google nexus 7 menu, css transitions, sidebar, side menu, slide out menu" />
+    <meta name="author" content="Codrops" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- 사이드바 CSS -->
+    <link rel="stylesheet" type="text/css" href="csss/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="csss/demo.css" />
+    <link rel="stylesheet" type="text/css" href="csss/component.css" />
+    <!-- 페이지 공통 CSS -->
+    <link rel="stylesheet" href="csss/style.css">
+    <!-- 폼태그 전용 CSS-->
+    <link rel="stylesheet" href="csss/form.css">
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="BTMS-favicon.ico">
+    <link rel="favicon" href="BTMS-favicon.ico">
+    <!-- 아이콘 폰트 - 구글 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- 아이콘 폰트 - XEIcon -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <script src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div class="main">
+            <header>
+                <div class="container">
+                    <ul id="gn-menu" class="gn-menu-main">
+                        <li class="gn-trigger">
+                            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                            <nav class="gn-menu-wrapper">
+                                <div class="gn-scroller">
+                                    <ul class="gn-menu">
+                                        <li class="gn-search-item">
+                                            <input placeholder="Search" type="search" class="gn-search">
+                                            <i class=""></i>
+                                            <a class="gn-icon gn-icon-search"><span>검색</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gn-icon n-players">선수 관리</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="gn-icon n-pitchers">투수</a></li>
+                                                <li><a class="n-batters">타자</a></li>
+                                                <li><a class="n-juniorplayers">육성/신인</a></li>
+                                                <li><a class="n-armyplayers">군입대</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-coachingstaff">코칭스태프</a></li>
+                                        <li><a class="n-cheers">응원단/FAN</a></li>
+                                        <li><a class="n-stadium">구장</a></li>
+                                        <li>
+                                            <a class="n-records">성적</a>
+                                            <ul class="gn-submenu">
+                                                <li><a class="n-pRecords">투수성적</a></li>
+                                                <li><a class="n-bRecords">타자성적</a></li>
+                                                <li><a class="n-tRecords">팀성적</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="n-sponsers">스폰서</a></li>
+                                    </ul>
+                                </div><!-- /gn-scroller -->
+                            </nav>
+                        </li>
+                        <li class="logo">
+                            <div class="logo">
+                                <a href="main.html">
+                                    <img src="imgs/BTMS logo.png" alt="로고">
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="user" id="user">
+                                <div class="u_profile" style="float: right;">
+                                    <div class="box" style="background: #eaeaea;">
+                                        <img class="profile" src="imgs/BI/p_logo.jpg">
+                                    </div>
+                                    <div class="admin" id="admin">
+                                        <a href="team.html" id="t_name">두산베어스</a>관리자&nbsp;
+                                        <a href="team.html" id="ad_name">한결</a>님
+                                        <button class="logout" id="logout">로그아웃</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /container -->
+                <script src="js/classie.js"></script>
+                <script src="js/gnmenu.js"></script>
+                <script>
+                    new gnMenu(document.getElementById('gn-menu'));
+                </script>
+            </header>
+        </div>
+    </div>
+    <center>
+        <section>
+            <article>
+                <div class="searchP">
+                    <h1 style="text-align: center; font-size: 33px;">- 선수 조회 -</h1>
+                    <form action="searchPlayer" method="post">
+                        <br>
+                        <select name="pp_name" id="pp_name">
+                            <option value="none">== 포지션 ==</option>
+                            <option value="1">투수</option>
+                            <option value="2">포수</option>
+                            <option value="3">내야수</option>
+                            <option value="4">외야수</option>
+                        </select>
+                        <button type="submit" style="width: 50px; height: 25px;">조회</button>
+                        <br><br>
+                    </form>
+                    <div>
+                        <div class="pTable">
+                            <table id="playerList">
+                                <thead>
+                                    <tr>
+                                        <th>등번호</th>
+                                        <th>이름</th>
+                                        <th>생년월일</th>
+                                        <th>포지션</th>
+                                        <th>입단년도</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>24</td>
+                                        <td><a href="">오재원</a></td>
+                                        <td>1985-02-09</td>
+                                        <td>내야수/C</td>
+                                        <td>2007</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>박세혁</td>
+                                        <td>1990-01-09</td>
+                                        <td>포　수</td>
+                                        <td>2011</td>
+                                    </tr>
+                                    <tr>
+                                        <td>52</td>
+                                        <td>김재호</td>
+                                        <td>1985-03-21</td>
+                                        <td>내야수</td>
+                                        <td>2004</td>
+                                    </tr>
+                                    <tr>
+                                        <td>36</td>
+                                        <td>오재일</td>
+                                        <td>1986-10-29</td>
+                                        <td>내야수</td>
+                                        <td>2005</td>
+                                    </tr>
+                                    <tr>
+                                        <td>53</td>
+                                        <td>최주환</td>
+                                        <td>1988-02-28</td>
+                                        <td>내야수</td>
+                                        <td>2006</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>허경민</td>
+                                        <td>1990-08-26</td>
+                                        <td>내야수</td>
+                                        <td>2009</td>
+                                    </tr>
+                                    <tr>
+                                        <td>32</td>
+                                        <td>김재환</td>
+                                        <td>1988-09-22</td>
+                                        <td>외야수</td>
+                                        <td>2008</td>
+                                    </tr>
+                                    <tr>
+                                        <td>37</td>
+                                        <td>박건우</td>
+                                        <td>1990-09-08</td>
+                                        <td>외야수</td>
+                                        <td>2009</td>
+                                    </tr>
+                                    <tr>
+                                        <td>31</td>
+                                        <td>정수빈</td>
+                                        <td>1990-10-07</td>
+                                        <td>외야수</td>
+                                        <td>2009</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>국해성</td>
+                                        <td>1989-10-08</td>
+                                        <td>외야수</td>
+                                        <td>2008</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17</td>
+                                        <td>류지혁</td>
+                                        <td>1994-01-13</td>
+                                        <td>내야수</td>
+                                        <td>2012</td>
+                                    </tr>
+                                    <tr>
+                                        <td>29</td>
+                                        <td>유희관</td>
+                                        <td>1986-06-01</td>
+                                        <td>투　수</td>
+                                        <td>2009</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28</td>
+                                        <td>장원준</td>
+                                        <td>1985-07-31</td>
+                                        <td>투　수</td>
+                                        <td>2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 </td>
+                                        <td>함덕주</td>
+                                        <td>1995-01-13</td>
+                                        <td>투　수</td>
+                                        <td>2013</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>권　혁</td>
+                                        <td>1983-11-06</td>
+                                        <td>투　수</td>
+                                        <td>2019</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ul class="pagination">
+                        </ul>
+                        <script>
+                            function pagination() {
+                                var req_num_row = 10;
+                                var $tr = jQuery('tbody tr');
+                                var total_num_row = $tr.length;
+                                var num_pages = 0;
+                                if (total_num_row % req_num_row == 0) {
+                                    num_pages = total_num_row / req_num_row;
+                                }
+                                if (total_num_row % req_num_row >= 1) {
+                                    num_pages = total_num_row / req_num_row;
+                                    num_pages++;
+                                    num_pages = Math.floor(num_pages++);
+                                }
+
+                                jQuery('.pagination').append("<li><a class=\"prev\"><i class=\"xi-backward\"></i></a></li>");
+
+                                for (var i = 1; i <= num_pages; i++) {
+                                    jQuery('.pagination').append("<li><a>" + i + "</a></li>");
+                                    jQuery('.pagination li:nth-child(2)').addClass("active");
+                                    jQuery('.pagination a').addClass("pagination-link");
+                                }
+
+                                jQuery('.pagination').append("<li><a class=\"next\"><i class=\"xi-forward\"></i></a></li>");
+
+                                $tr.each(function (i) {
+                                    jQuery(this).hide();
+                                    if (i + 1 <= req_num_row) {
+                                        $tr.eq(i).show();
+                                    }
+                                });
+
+                                jQuery('.pagination a').click('.pagination-link', function (e) {
+                                    e.preventDefault();
+                                    $tr.hide();
+                                    var page = jQuery(this).text();
+                                    var temp = page - 1;
+                                    var start = temp * req_num_row;
+                                    var current_link = temp;
+
+                                    jQuery('.pagination li').removeClass("active");
+                                    jQuery(this).parent().addClass("active");
+
+                                    for (var i = 0; i < req_num_row; i++) {
+                                        $tr.eq(start + i).show();
+                                    }
+
+                                    if (temp >= 1) {
+                                        jQuery('.pagination li:first-child').removeClass("disabled");
+                                    }
+                                    else {
+                                        jQuery('.pagination li:first-child').addClass("disabled");
+                                    }
+
+                                });
+
+                                jQuery('.prev').click(function (e) {
+                                    e.preventDefault();
+                                    jQuery('.pagination li:first-child').removeClass("active");
+                                });
+
+                                jQuery('.next').click(function (e) {
+                                    e.preventDefault();
+                                    jQuery('.pagination li:last-child').removeClass("active");
+                                });
+
+                            }
+
+                            jQuery('document').ready(function () {
+                                pagination();
+
+                                jQuery('.pagination li:first-child').addClass("disabled");
+
+                            });
+                        </script>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </center>
+</body>
+
+</html>
