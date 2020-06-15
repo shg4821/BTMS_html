@@ -1,0 +1,9 @@
+--------------------------------------------------------
+--  Constraints for Table HIT_RECORDS
+--------------------------------------------------------
+
+  ALTER TABLE "TOM"."HIT_RECORDS" MODIFY ("HR_CODE" NOT NULL ENABLE);
+  ALTER TABLE "TOM"."HIT_RECORDS" MODIFY ("PL_CODE" NOT NULL ENABLE);
+  ALTER TABLE "TOM"."HIT_RECORDS" ADD CONSTRAINT "PK_HIT_RECORDS" PRIMARY KEY ("HR_CODE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
